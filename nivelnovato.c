@@ -3,14 +3,14 @@
 #include <string.h>
 #include <time.h>
 
-//----- Definições -----
+// -------------------- Definições --------------------
 
 #define TAM_FILA 5
 
 typedef struct {
     int id;
-    char nome; // 'I', 'O', 'T', 'L', etc...
-}Peca;
+    char nome; // 'I', 'O', 'T', 'L', etc.
+} Peca;
 
 typedef struct {
     Peca fila[TAM_FILA];
@@ -19,15 +19,15 @@ typedef struct {
     int tamanho;
 } FilaPecas;
 
-//----- Protótipos -----
+// -------------------- Protótipos --------------------
 
-voidinicializarFila(FilaPecas *f);
+void inicializarFila(FilaPecas *f);
 Peca gerarPeca();
-int enfilerar(FilaPecas *f, Peca p);
+int enfileirar(FilaPecas *f, Peca p);
 int desenfileirar(FilaPecas *f);
 void mostrarFila(FilaPecas *f);
 
-//----- Função Principal -----
+// -------------------- Função Principal --------------------
 
 int main() {
     FilaPecas fila;
@@ -37,9 +37,7 @@ int main() {
     inicializarFila(&fila);
 
     do {
-        printf("============================\n");
-        printf(" TETRIS STACK - NÍVEL NOVATO\n");
-        printf("============================\n");
+        printf("\n=== TETRIS STACK - NÍVEL NOVATO ===\n");
         printf("1 - Jogar peça (remover da frente)\n");
         printf("2 - Inserir nova peça (adicionar no final)\n");
         printf("3 - Visualizar fila\n");
@@ -57,30 +55,30 @@ int main() {
                 break;
             case 2: {
                 Peca nova = gerarPeca();
-                if (enfilerar(&fila, nova)) {
-                    printf("Nova peça inserida!: [%d-%c]\n, nova.id,nova.nome");
+                if (enfileirar(&fila, nova)) {
+                    printf("Nova peça inserida: [%d-%c]\n", nova.id, nova.nome);
                 } else {
-                    printf("Fila cheia! Não e possivel inserir nova peça.\n");
+                    printf("Fila cheia! Não é possível inserir nova peça.\n");
                 }
                 break;
             }
             case 3:
-               mostrarFila(&fila);
-               break;
+                mostrarFila(&fila);
+                break;
             case 0:
-            printf("Encerrando o jogo.\n");
-            break;
+                printf("Encerrando o jogo.\n");
+                break;
             default:
-            printf("Opção inválida!\n");
+                printf("Opção inválida!\n");
         }
     } while(opcao != 0);
 
     return 0;
-
 }
 
-// ----- Implementações -----
- void inicializarFila(FilaPecas *f) {
+// -------------------- Implementações --------------------
+
+void inicializarFila(FilaPecas *f) {
     f->inicio = 0;
     f->fim = 0;
     f->tamanho = 0;
@@ -88,20 +86,20 @@ int main() {
     printf("Inicializando fila com 5 peças:\n");
     for (int i = 0; i < TAM_FILA; i++) {
         Peca p = gerarPeca();
-        enfilerar(f, p);
-        printf("Peça incial: [%d-%c\n]", p.id, p.nome);
+        enfileirar(f, p);
+        printf("Peça inicial: [%d-%c]\n", p.id, p.nome);
     }
- }
+}
 
- Peca gerarPeca() {
+Peca gerarPeca() {
     char tipos[] = {'I', 'O', 'T', 'L', 'J', 'S', 'Z'};
     Peca p;
     p.id = rand() % 1000; // ID único até 999
     p.nome = tipos[rand() % 7];
     return p;
- }
+}
 
-  enfileirar(FilaPecas *f, Peca p) {
+int enfileirar(FilaPecas *f, Peca p) {
     if (f->tamanho == TAM_FILA) {
         return 0; // Fila cheia
     }
