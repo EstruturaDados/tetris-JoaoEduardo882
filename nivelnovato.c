@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-// -------------------- Definições --------------------
+// ----- Definições -----
 
 #define TAM_FILA 5
 
@@ -19,7 +19,7 @@ typedef struct {
     int tamanho;
 } FilaPecas;
 
-// -------------------- Protótipos --------------------
+// ----- Protótipos -----
 
 void inicializarFila(FilaPecas *f);
 Peca gerarPeca();
@@ -27,7 +27,7 @@ int enfileirar(FilaPecas *f, Peca p);
 int desenfileirar(FilaPecas *f);
 void mostrarFila(FilaPecas *f);
 
-// -------------------- Função Principal --------------------
+// ----- Função Principal -----
 
 int main() {
     FilaPecas fila;
@@ -76,7 +76,7 @@ int main() {
     return 0;
 }
 
-// -------------------- Implementações --------------------
+// ----- Implementações -----
 
 void inicializarFila(FilaPecas *f) {
     f->inicio = 0;

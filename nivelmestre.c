@@ -6,7 +6,7 @@
 #define TAM_FILA 5
 #define TAM_PILHA 3
 
-// -------------------- Structs --------------------
+// ----- Structs -----
 
 typedef struct {
     int id;
@@ -28,7 +28,7 @@ typedef struct {
     PilhaReserva pilha;
 } EstadoJogo;
 
-// -------------------- Protótipos --------------------
+// ----- Protótipos -----
 
 void inicializarFila(FilaPecas *f);
 void inicializarPilha(PilhaReserva *p);
@@ -46,7 +46,7 @@ void trocarTopoFilaPilha(FilaPecas *f, PilhaReserva *p);
 void inverterFilaComPilha(FilaPecas *f, PilhaReserva *p);
 void copiarEstado(EstadoJogo *dest, EstadoJogo *src);
 
-// -------------------- Função Principal --------------------
+// ----- Função Principal -----
 
 int main() {
     FilaPecas fila;
@@ -140,7 +140,7 @@ int main() {
     return 0;
 }
 
-// -------------------- Fila --------------------
+// ----- Fila -----
 
 void inicializarFila(FilaPecas *f) {
     f->inicio = 0;
@@ -181,7 +181,7 @@ void mostrarFila(FilaPecas *f) {
     printf("\n");
 }
 
-// -------------------- Pilha --------------------
+// ----- Pilha -----
 
 void inicializarPilha(PilhaReserva *p) {
     p->topo = -1;
@@ -213,7 +213,7 @@ void mostrarPilha(PilhaReserva *p) {
     printf("\n");
 }
 
-// -------------------- Extras --------------------
+// ----- Extras -----
 
 void trocarTopoFilaPilha(FilaPecas *f, PilhaReserva *p) {
     if (f->tamanho == 0 || p->topo == -1) {
@@ -263,7 +263,7 @@ void copiarEstado(EstadoJogo *dest, EstadoJogo *src) {
     *dest = *src;
 }
 
-// -------------------- Geração --------------------
+// ----- Geração -----
 
 Peca gerarPeca() {
     char tipos[] = {'I', 'O', 'T', 'L', 'J', 'S', 'Z'};
